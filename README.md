@@ -1,1 +1,2 @@
-# capture-the-flag
+# Climate change is a profound threat to cultural heritage sites and practices globally. Rising sea levels, extreme weather events, and shifting climate patterns jeopardize historical monuments, traditional practices, and indigenous knowledge systems.
+This campaign aims to highlight the crucial connection between climate change and cultural heritage, stressing the necessity of preserving both for future generations.
