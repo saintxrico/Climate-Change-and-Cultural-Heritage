@@ -1,0 +1,135 @@
+// This is a sample path: c:\Users\HP\OneDrive\Documents\PROJECTS\CLIMATE CHANGE AND CULTURAL HERITAGE\backend\prisma\schema.prisma
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// model User {
+//   id        String   @id @default(cuid())
+//   name      String
+//   email     String   @unique
+//   password  String
+//   role      String   @default("user") // general, officer, volunteer, admin
+//   createdAt DateTime @default(now())
+
+//   reports    Report[]
+//   comments   Comment[]
+//   likes      Like[]
+//   events     Event[]
+//   volunteers Volunteer[]
+//   articles   Article[]
+
+//   @@map("users")
+// }
+
+// model Report {
+//   id          String   @id @default(cuid())
+//   title       String
+//   description String
+//   type        String   // dumping, deforestation, pollution
+//   imageUrl    String?
+//   latitude    Float
+//   longitude   Float
+//   status      String   @default("pending") // pending, verified, resolved
+//   userId      String
+//   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   createdAt   DateTime @default(now())
+
+//   comments Comment[]
+//   likes    Like[]
+
+//   @@map("reports")
+// }
+
+// model Comment {
+//   id        String   @id @default(cuid())
+//   content   String
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   reportId  String
+//   report    Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+//   createdAt DateTime @default(now())
+
+//   @@map("comments")
+// }
+
+// model Like {
+//   id       String @id @default(cuid())
+//   userId   String
+//   user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   reportId String
+//   report   Report @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+//   @@unique([userId, reportId])
+//   @@map("likes")
+// }
+
+// model Event {
+//   id          String   @id @default(cuid())
+//   title       String
+//   description String
+//   location    String
+//   date        DateTime
+//   createdBy   String
+//   creator     User     @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+//   createdAt   DateTime @default(now())
+
+//   volunteers Volunteer[]
+
+//   @@map("events")
+// }
+
+// model Volunteer {
+//   id      String @id @default(cuid())
+//   userId  String
+//   user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   eventId String
+//   event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+//   @@unique([userId, eventId])
+//   @@map("volunteers")
+// }
+
+// model Article {
+//   id        String   @id @default(cuid())
+//   title     String
+//   content   String
+//   authorId  String
+//   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+//   createdAt DateTime @default(now())
+
+//   @@map("articles")
+// }
+
+// model HeritageSite {
+//   id                   String @id @default(cuid())
+//   name                 String
+//   description          String
+//   location             String
+//   culturalSignificance String
+
+//   @@map("heritage_sites")
+// }
+
+// model IndigenousPractice {
+//   id          String @id @default(cuid())
+//   title       String
+//   description String
+//   region      String
+
+//   @@map("indigenous_practices")
+// }
+
+// model ClimateEvent {
+//   id      String   @id @default(cuid())
+//   type    String
+//   location String
+//   date    DateTime
+//   impact  String
+
+//   @@map("climate_events")
+// }
